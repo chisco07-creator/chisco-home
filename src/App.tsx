@@ -34,6 +34,10 @@ const materials = [
   { name: 'Electrical Wires', specs: '2.5-10mm² • NYY Standard', price: '₦12.5K/roll', delivery: '2 days' },
 ];
 
+const whatsappLink = 'https://wa.me/2348140888847';
+const callLink = 'tel:+2347037551319';
+const whatsappMessage = 'https://wa.me/2348140888847?text=Hi%20Chisco%20Home%2C%20I%20would%20like%20to%20inquire%20about%20your%20services.';
+
 function ListingCard({ item }: { item: any }) {
   return (
     <article className="listing-card">
@@ -45,6 +49,14 @@ function ListingCard({ item }: { item: any }) {
         <button className="text-button">View details</button>
       </div>
     </article>
+  );
+}
+
+function WhatsAppButton({ text = 'Chat on WhatsApp', variant = 'primary' }: { text?: string; variant?: 'primary' | 'secondary' }) {
+  return (
+    <a href={whatsappMessage} target="_blank" rel="noreferrer" className={`whatsapp-button ${variant}-button`}>
+      <span className="whatsapp-icon">💬</span> {text}
+    </a>
   );
 }
 
@@ -67,11 +79,13 @@ export default function App() {
           <a href="#builders" className="nav-link">Builders</a>
           <a href="#contact" className="nav-link">Contact</a>
         </nav>
-        <button className="primary-button">Get started</button>
+        <div className="header-actions">
+          <a href={callLink} className="secondary-button small-button" title="Call Chisco Home">📞 Call</a>
+          <WhatsAppButton text="💬 WhatsApp" variant="primary" />
+        </div>
       </header>
 
       <main>
-        {/* HERO */}
         <section className="hero">
           <div className="hero-copy">
             <span className="eyebrow">Your complete property partner</span>
@@ -79,9 +93,12 @@ export default function App() {
             <p>
               Chisco Home is your one-stop platform for acquiring properties, renting offices and warehouses, connecting with builders and skilled workers, and accessing a managed supply chain for all building materials.
             </p>
+            <div className="slogan">
+              <em>"Never stop believing"</em>
+            </div>
             <div className="cta-row">
               <button className="primary-button">Explore opportunities</button>
-              <button className="secondary-button">Contact an agent</button>
+              <WhatsAppButton text="Chat on WhatsApp" />
             </div>
             <div className="trust-row">
               <span className="trust-pill">500+ plots sold</span>
@@ -95,11 +112,11 @@ export default function App() {
               <div className="property-visual" aria-hidden="true"><div className="land-shape" /></div>
               <div className="showcase-meta"><div><h3>Greenfield Estate</h3><p>Residential land • Ready to build</p></div><strong>₦18.5M</strong></div>
               <div className="mini-stats"><div><span>Location</span><strong>Lekki-Epe</strong></div><div><span>Size</span><strong>1,200 sqm</strong></div></div>
+              <WhatsAppButton text="Inquire on WhatsApp" variant="secondary" />
             </div>
           </div>
         </section>
 
-        {/* SERVICE TABS */}
         <section className="services-section" id="services">
           <div className="section-heading">
             <span className="eyebrow">What do you need?</span>
@@ -107,33 +124,12 @@ export default function App() {
           </div>
 
           <div className="service-tabs">
-            <button 
-              className={`tab-button ${activeTab === 'buy' ? 'active' : ''}`}
-              onClick={() => setActiveTab('buy')}
-            >
-              <span className="tab-icon">🏠</span> Buy Land & Property
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'rent' ? 'active' : ''}`}
-              onClick={() => setActiveTab('rent')}
-            >
-              <span className="tab-icon">🏢</span> Rent Office & Warehouse
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'build' ? 'active' : ''}`}
-              onClick={() => setActiveTab('build')}
-            >
-              <span className="tab-icon">🏗️</span> Build & Construction
-            </button>
-            <button 
-              className={`tab-button ${activeTab === 'supply' ? 'active' : ''}`}
-              onClick={() => setActiveTab('supply')}
-            >
-              <span className="tab-icon">📦</span> Supply Materials
-            </button>
+            <button className={`tab-button ${activeTab === 'buy' ? 'active' : ''}`} onClick={() => setActiveTab('buy')}><span className="tab-icon">🏠</span> Buy Land & Property</button>
+            <button className={`tab-button ${activeTab === 'rent' ? 'active' : ''}`} onClick={() => setActiveTab('rent')}><span className="tab-icon">🏢</span> Rent Office & Warehouse</button>
+            <button className={`tab-button ${activeTab === 'build' ? 'active' : ''}`} onClick={() => setActiveTab('build')}><span className="tab-icon">🏗️</span> Build & Construction</button>
+            <button className={`tab-button ${activeTab === 'supply' ? 'active' : ''}`} onClick={() => setActiveTab('supply')}><span className="tab-icon">📦</span> Supply Materials</button>
           </div>
 
-          {/* BUY TAB */}
           {activeTab === 'buy' && (
             <div className="tab-content">
               <div className="tab-header">
@@ -145,12 +141,11 @@ export default function App() {
               </div>
               <div className="tab-footer">
                 <button className="secondary-button">View all land listings</button>
-                <button className="secondary-button">Schedule a site visit</button>
+                <WhatsAppButton text="Book a site visit" />
               </div>
             </div>
           )}
 
-          {/* RENT TAB */}
           {activeTab === 'rent' && (
             <div className="tab-content">
               <div className="tab-header">
@@ -162,12 +157,11 @@ export default function App() {
               </div>
               <div className="tab-footer">
                 <button className="secondary-button">View all rentals</button>
-                <button className="secondary-button">Request a viewing</button>
+                <WhatsAppButton text="Request a viewing" />
               </div>
             </div>
           )}
 
-          {/* BUILD TAB */}
           {activeTab === 'build' && (
             <div className="tab-content">
               <div className="tab-header">
@@ -180,10 +174,7 @@ export default function App() {
                 <div className="builders-grid">
                   {contractors.map((contractor) => (
                     <article key={contractor.name} className="builder-card">
-                      <div className="builder-header">
-                        <h3>{contractor.name}</h3>
-                        <span className="rating">★ {contractor.rating}</span>
-                      </div>
+                      <div className="builder-header"><h3>{contractor.name}</h3><span className="rating">★ {contractor.rating}</span></div>
                       <span className="tag">{contractor.specialty}</span>
                       <p>{contractor.projects} projects completed</p>
                       <button className="text-button">Get a quote</button>
@@ -194,7 +185,7 @@ export default function App() {
 
               <div className="build-subsection">
                 <h4>Skilled Tradespeople Network</h4>
-                <p className="subsection-intro">Register as a tradesperson or hire verified professionals for your project</p>
+                <p className="subsection-intro">Register as a tradesperson or hire verified professionals</p>
                 <div className="trades-grid">
                   {trades.map((trade) => (
                     <article key={trade.title} className="trade-card">
@@ -202,9 +193,7 @@ export default function App() {
                       <h3>{trade.title}</h3>
                       <p className="trade-description">{trade.desc}</p>
                       <span className="available">{trade.available} professionals</span>
-                      <div className="trade-cta">
-                        <button className="text-button">Hire now</button>
-                      </div>
+                      <div className="trade-cta"><button className="text-button">Hire now</button></div>
                     </article>
                   ))}
                 </div>
@@ -212,12 +201,11 @@ export default function App() {
 
               <div className="tab-footer">
                 <button className="secondary-button">Browse all builders</button>
-                <button className="secondary-button">Post a job</button>
+                <WhatsAppButton text="Talk to a specialist" />
               </div>
             </div>
           )}
 
-          {/* SUPPLY TAB */}
           {activeTab === 'supply' && (
             <div className="tab-content">
               <div className="tab-header">
@@ -249,13 +237,12 @@ export default function App() {
               </div>
               <div className="tab-footer">
                 <button className="secondary-button">Browse full catalog</button>
-                <button className="secondary-button">Request bulk quote</button>
+                <WhatsAppButton text="Request bulk quote" />
               </div>
             </div>
           )}
         </section>
 
-        {/* HOW IT WORKS */}
         <section className="process-section">
           <div className="section-heading">
             <span className="eyebrow">The Chisco Home difference</span>
@@ -276,50 +263,46 @@ export default function App() {
           </div>
         </section>
 
-        {/* LEAD FORM */}
         <section className="lead-section" id="contact">
           <div className="lead-copy">
             <span className="eyebrow">Ready to get started?</span>
-            <h2>Tell us what you're looking for. We'll guide you forward.</h2>
+            <h2>Never stop believing in your property dreams.</h2>
+            <p>Tell us what you're looking for. We'll guide you forward with expert support and trusted partnerships.</p>
             <ul>
-              <li>Buy or sell land and properties</li>
-              <li>Rent an office, warehouse, or condo</li>
-              <li>Find builders and skilled workers</li>
-              <li>Order quality building materials</li>
+              <li>💼 Buy or sell land and properties</li>
+              <li>🏢 Rent an office, warehouse, or condo</li>
+              <li>🏗️ Find builders and skilled workers</li>
+              <li>📦 Order quality building materials</li>
             </ul>
+            <div className="contact-actions">
+              <a href={callLink} className="primary-button">📞 Call us: +234 703 755 1319</a>
+              <WhatsAppButton text="💬 WhatsApp us: +234 814 088 8847" />
+            </div>
           </div>
           <form className="lead-form" action="#">
-            <label>
-              Full name
-              <input type="text" placeholder="Your name" required />
-            </label>
-            <label>
-              Email or phone
-              <input type="text" placeholder="you@example.com or 08012345678" required />
-            </label>
-            <label>
-              What do you need?
-              <select defaultValue="" required>
-                <option value="" disabled>Select a service</option>
-                <option>Buy land or property</option>
-                <option>Sell land or property</option>
-                <option>Rent office, warehouse, or condo</option>
-                <option>Build a project</option>
-                <option>Source skilled workers</option>
-                <option>Order building materials</option>
-              </select>
-            </label>
+            <label>Full name<input type="text" placeholder="Your name" required /></label>
+            <label>Email or phone<input type="text" placeholder="you@example.com or 08012345678" required /></label>
+            <label>What do you need?<select defaultValue="" required>
+              <option value="" disabled>Select a service</option>
+              <option>Buy land or property</option>
+              <option>Sell land or property</option>
+              <option>Rent office, warehouse, or condo</option>
+              <option>Build a project</option>
+              <option>Source skilled workers</option>
+              <option>Order building materials</option>
+            </select></label>
             <button type="submit" className="primary-button">Get started</button>
+            <p className="form-note">Or chat with us directly on WhatsApp for faster response.</p>
           </form>
         </section>
 
-        {/* CTA BANNER */}
         <section className="cta-banner">
           <div>
             <span className="eyebrow alt">Everything you need to succeed</span>
-            <h2>One platform. Complete property and construction solutions.</h2>
+            <h2>Never stop believing. Never stop building.</h2>
+            <p>One platform. Complete property and construction solutions.</p>
           </div>
-          <button className="primary-button">Explore Chisco Home</button>
+          <WhatsAppButton text="Start a conversation" />
         </section>
       </main>
 
@@ -329,7 +312,8 @@ export default function App() {
             <div className="brand-mark small">C</div>
             <div>
               <div className="brand-name">Chisco Home</div>
-              <p>Buy • Rent • Build • Supply</p>
+              <p className="footer-tagline">Buy • Rent • Build • Supply</p>
+              <p className="footer-slogan">"Never stop believing"</p>
             </div>
           </div>
         </div>
@@ -338,6 +322,10 @@ export default function App() {
           <a href="#properties">Properties</a>
           <a href="#builders">Builders</a>
           <a href="#contact">Contact</a>
+        </div>
+        <div className="footer-callout">
+          <a href={callLink} className="footer-link">📞 Call: +234 703 755 1319</a>
+          <a href={whatsappLink} target="_blank" rel="noreferrer" className="footer-link">💬 WhatsApp: +234 814 088 8847</a>
         </div>
         <p>© 2026 Chisco Home • Building better in Nigeria</p>
       </footer>
