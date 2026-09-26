@@ -95,24 +95,69 @@ const materials = [
   },
 ];
 
+const trades = [
+  {
+    title: 'Bricklayers',
+    icon: '🧱',
+    description: 'Expert masonry and wall construction',
+    available: '47 verified professionals',
+    avgRating: '4.6/5',
+  },
+  {
+    title: 'Electricians',
+    icon: '⚡',
+    description: 'Electrical installation and repairs',
+    available: '52 verified professionals',
+    avgRating: '4.7/5',
+  },
+  {
+    title: 'Plumbers',
+    icon: '🔧',
+    description: 'Plumbing systems and installations',
+    available: '38 verified professionals',
+    avgRating: '4.5/5',
+  },
+  {
+    title: 'Boreholers',
+    icon: '💧',
+    description: 'Borehole drilling and water systems',
+    available: '24 verified professionals',
+    avgRating: '4.8/5',
+  },
+  {
+    title: 'Carpenters',
+    icon: '🪚',
+    description: 'Woodwork and carpentry services',
+    available: '35 verified professionals',
+    avgRating: '4.6/5',
+  },
+  {
+    title: 'Interior Decorators',
+    icon: '🎨',
+    description: 'Design and finishing touches',
+    available: '28 verified professionals',
+    avgRating: '4.9/5',
+  },
+];
+
 const processSteps = [
   { number: '01', title: 'Find your land', text: 'Select from verified plots in strategic locations across Lagos and Nigeria.' },
-  { number: '02', title: 'Connect with contractors', text: 'Browse trusted builders, compare quotes, and select based on your project needs.' },
-  { number: '03', title: 'Source materials efficiently', text: 'Access quality building supplies at competitive prices with fast delivery.' },
+  { number: '02', title: 'Connect with professionals', text: 'Browse trusted builders, contractors, and skilled workers. Request quotes and compare.' },
+  { number: '03', title: 'Source materials & execute', text: 'Access quality building supplies and manage your project with verified skilled professionals.' },
 ];
 
 const faqs = [
   {
-    question: 'How do I verify a contractor's credentials?',
-    answer: 'All contractors on our platform are verified, licensed, and have completed project portfolios. We provide ratings and client reviews.',
+    question: 'How do I hire a skilled worker or tradesperson?',
+    answer: 'Browse our verified professionals by trade, check their ratings and portfolios, then request a quote. We facilitate secure payment and dispute resolution.',
   },
   {
-    question: 'Can I get building material discounts for bulk orders?',
-    answer: 'Yes. Our suppliers offer competitive bulk pricing and flexible payment terms for large construction projects.',
+    question: 'How can I register as a tradesperson?',
+    answer: 'Create a profile, verify your identity and qualifications, upload your portfolio, and start receiving project requests from homeowners and contractors.',
   },
   {
-    question: 'Do you manage project timelines?',
-    answer: 'We connect you with experienced contractors who provide project plans. We recommend milestone-based payment for transparency.',
+    question: 'Are all workers on the platform verified?',
+    answer: 'Yes. All professionals undergo identity verification and provide proof of experience. Clients can rate and review their work transparently.',
   },
 ];
 
@@ -124,13 +169,14 @@ export default function App() {
           <div className="brand-mark">C</div>
           <div>
             <div className="brand-name">Chisco Home</div>
-            <div className="brand-tag">Land, builders & materials</div>
+            <div className="brand-tag">Land, builders, materials & skilled workers</div>
           </div>
         </div>
 
         <nav className="nav" aria-label="Main navigation">
           <a href="#plots" className="nav-link">Plots</a>
           <a href="#builders" className="nav-link">Builders</a>
+          <a href="#trades" className="nav-link">Trades</a>
           <a href="#materials" className="nav-link">Materials</a>
           <a href="#process" className="nav-link">Process</a>
           <a href="#contact" className="nav-link">Contact</a>
@@ -143,21 +189,21 @@ export default function App() {
         <section className="hero">
           <div className="hero-copy">
             <span className="eyebrow">Build smarter in Nigeria</span>
-            <h1>Find land, trusted builders, and quality materials—all in one place.</h1>
+            <h1>Find land, trusted builders, skilled workers, and quality materials—all in one place.</h1>
             <p>
-              Chisco Home simplifies property development by connecting you with verified contractors, quality suppliers, and prime land.
+              Chisco Home simplifies property development by connecting you with verified contractors, quality suppliers, and skilled tradespeople.
               Whether you're building your dream home or a commercial project, we make the process efficient, transparent, and affordable.
             </p>
 
             <div className="cta-row">
               <button className="primary-button">Browse plots</button>
-              <button className="secondary-button">Find contractors</button>
+              <button className="secondary-button">Find professionals</button>
             </div>
 
             <div className="trust-row" aria-label="Highlights">
               <span className="trust-pill">500+ plots sold</span>
-              <span className="trust-pill">200+ verified builders</span>
-              <span className="trust-pill">Fast material delivery</span>
+              <span className="trust-pill">300+ skilled workers</span>
+              <span className="trust-pill">Fast delivery service</span>
             </div>
           </div>
 
@@ -278,6 +324,49 @@ export default function App() {
           </div>
         </section>
 
+        <section className="trades-section" id="trades">
+          <div className="section-heading split-heading">
+            <div>
+              <span className="eyebrow">Skilled workforce</span>
+              <h2>Vetted tradespeople for every job</h2>
+            </div>
+            <button className="secondary-button">Browse all trades</button>
+          </div>
+
+          <p className="section-intro">
+            Connect with verified bricklayers, electricians, plumbers, boreholers, carpenters, and interior decorators.
+            Register your skills or hire trusted professionals for your projects.
+          </p>
+
+          <div className="trades-grid">
+            {trades.map((trade) => (
+              <article key={trade.title} className="trade-card">
+                <div className="trade-icon">{trade.icon}</div>
+                <h3>{trade.title}</h3>
+                <p className="trade-description">{trade.description}</p>
+                <div className="trade-meta">
+                  <span className="available">{trade.available}</span>
+                  <span className="rating">★ {trade.avgRating}</span>
+                </div>
+                <div className="trade-cta">
+                  <button className="text-button">Hire now</button>
+                  <button className="text-button secondary">Register as {trade.title.toLowerCase()}</button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="trades-signup">
+            <span className="eyebrow">Are you a skilled tradesperson?</span>
+            <h3>Join our network and get more jobs</h3>
+            <p>
+              Register your trade, showcase your portfolio, get rated by clients, and access a steady stream of job opportunities.
+              Work on your terms, build your reputation, earn more.
+            </p>
+            <button className="primary-button">Create a professional profile</button>
+          </div>
+        </section>
+
         <section className="materials-section" id="materials">
           <div className="section-heading split-heading">
             <div>
@@ -362,7 +451,7 @@ export default function App() {
             <h2>Let us help you build smart in Nigeria.</h2>
             <ul>
               <li>Find verified land in prime locations</li>
-              <li>Connect with rated contractors and builders</li>
+              <li>Connect with rated contractors and skilled workers</li>
               <li>Source quality materials at best prices</li>
             </ul>
           </div>
@@ -429,6 +518,7 @@ export default function App() {
         <div className="footer-links">
           <a href="#plots">Plots</a>
           <a href="#builders">Builders</a>
+          <a href="#trades">Trades</a>
           <a href="#materials">Materials</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
