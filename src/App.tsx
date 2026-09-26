@@ -38,30 +38,81 @@ const investmentZones = [
   { name: 'Lekki Phase 1', yield: '14% luxury demand', text: 'Premium residential plots with strong resale value and lifestyle appeal.' },
 ];
 
-const valuePoints = [
+const landValuePoints = [
   { title: 'Verified land documents', text: 'We review title status, survey reports, and ownership records to reduce risk.' },
   { title: 'Growth-focused locations', text: 'Our portfolio prioritizes land in high-demand corridors with strong appreciation.' },
   { title: 'Clear buyer guidance', text: 'From visit to closure, we help you make confident, informed land decisions.' },
 ];
 
+const contractors = [
+  {
+    title: 'Afolayan & Sons Construction',
+    specialty: 'Residential & Estate Development',
+    rating: '4.8/5',
+    projects: '120+ completed',
+    service: 'Full project management',
+  },
+  {
+    title: 'BuildRight Contractors Ltd',
+    specialty: 'Commercial & Industrial',
+    rating: '4.9/5',
+    projects: '85+ completed',
+    service: 'Design-build services',
+  },
+  {
+    title: 'Zenith Construction Group',
+    specialty: 'Luxury & High-rise',
+    rating: '4.7/5',
+    projects: '56+ completed',
+    service: 'Premium finishes',
+  },
+];
+
+const materials = [
+  {
+    name: 'Cement & Concrete',
+    supplier: 'BUA Group',
+    unit: 'Bag/Bulk',
+    status: 'In stock',
+  },
+  {
+    name: 'Steel Rods & Frames',
+    supplier: 'Lafarge Steel',
+    unit: 'Ton',
+    status: 'In stock',
+  },
+  {
+    name: 'Tiles & Finishing',
+    supplier: 'Kajola Ceramics',
+    unit: 'Box/Sqm',
+    status: 'In stock',
+  },
+  {
+    name: 'Electrical & Plumbing',
+    supplier: 'Eko Supplies Ltd',
+    unit: 'Unit/Kit',
+    status: 'In stock',
+  },
+];
+
 const processSteps = [
-  { number: '01', title: 'Tell us your goal', text: 'Share your budget, location preference, and whether you want residential, commercial, or agricultural land.' },
-  { number: '02', title: 'Select prime options', text: 'We shortlist land opportunities that match your goals and investment potential.' },
-  { number: '03', title: 'Secure the deal', text: 'We support negotiations, documentation, and closing so your purchase is smooth and secure.' },
+  { number: '01', title: 'Find your land', text: 'Select from verified plots in strategic locations across Lagos and Nigeria.' },
+  { number: '02', title: 'Connect with contractors', text: 'Browse trusted builders, compare quotes, and select based on your project needs.' },
+  { number: '03', title: 'Source materials efficiently', text: 'Access quality building supplies at competitive prices with fast delivery.' },
 ];
 
 const faqs = [
   {
-    question: 'Do you help with title verification?',
-    answer: 'Yes. We guide clients through document checks so they can buy land with confidence and avoid avoidable risk.',
+    question: 'How do I verify a contractor's credentials?',
+    answer: 'All contractors on our platform are verified, licensed, and have completed project portfolios. We provide ratings and client reviews.',
   },
   {
-    question: 'Can I buy land for future development?',
-    answer: 'Absolutely. We specialize in land that suits future building, estate development, and long-term appreciation.',
+    question: 'Can I get building material discounts for bulk orders?',
+    answer: 'Yes. Our suppliers offer competitive bulk pricing and flexible payment terms for large construction projects.',
   },
   {
-    question: 'What areas do you focus on?',
-    answer: 'We prioritize emerging and high-growth areas such as Ibeju-Lekki, Lekki, Epe, and selected commercial hubs.',
+    question: 'Do you manage project timelines?',
+    answer: 'We connect you with experienced contractors who provide project plans. We recommend milestone-based payment for transparency.',
   },
 ];
 
@@ -73,47 +124,47 @@ export default function App() {
           <div className="brand-mark">C</div>
           <div>
             <div className="brand-name">Chisco Home</div>
-            <div className="brand-tag">Land sales & investment</div>
+            <div className="brand-tag">Land, builders & materials</div>
           </div>
         </div>
 
         <nav className="nav" aria-label="Main navigation">
           <a href="#plots" className="nav-link">Plots</a>
-          <a href="#investment" className="nav-link">Investment</a>
+          <a href="#builders" className="nav-link">Builders</a>
+          <a href="#materials" className="nav-link">Materials</a>
           <a href="#process" className="nav-link">Process</a>
-          <a href="#faq" className="nav-link">FAQ</a>
           <a href="#contact" className="nav-link">Contact</a>
         </nav>
 
-        <button className="primary-button">Book a site visit</button>
+        <button className="primary-button">Start your project</button>
       </header>
 
       <main>
         <section className="hero">
           <div className="hero-copy">
-            <span className="eyebrow">Buy land with confidence</span>
-            <h1>Find prime plots that grow in value and fit your vision.</h1>
+            <span className="eyebrow">Build smarter in Nigeria</span>
+            <h1>Find land, trusted builders, and quality materials—all in one place.</h1>
             <p>
-              Chisco Home helps buyers discover secure, high-potential land for residential, commercial, and agricultural use.
-              From strategic locations to title guidance, we make land acquisition clearer and smarter.
+              Chisco Home simplifies property development by connecting you with verified contractors, quality suppliers, and prime land.
+              Whether you're building your dream home or a commercial project, we make the process efficient, transparent, and affordable.
             </p>
 
             <div className="cta-row">
               <button className="primary-button">Browse plots</button>
-              <button className="secondary-button">Talk to an agent</button>
+              <button className="secondary-button">Find contractors</button>
             </div>
 
             <div className="trust-row" aria-label="Highlights">
               <span className="trust-pill">500+ plots sold</span>
-              <span className="trust-pill">Title-guided process</span>
-              <span className="trust-pill">High-growth zones</span>
+              <span className="trust-pill">200+ verified builders</span>
+              <span className="trust-pill">Fast material delivery</span>
             </div>
           </div>
 
           <div className="hero-panel">
             <div className="hero-card">
               <div className="showcase-head">
-                <span>Featured land</span>
+                <span>Featured opportunity</span>
                 <span className="status-badge">Hot</span>
               </div>
 
@@ -124,7 +175,7 @@ export default function App() {
               <div className="showcase-meta">
                 <div>
                   <h3>Greenfield Estate</h3>
-                  <p>Residential & lifestyle development</p>
+                  <p>Ready to build • All services nearby</p>
                 </div>
                 <strong>₦18.5M</strong>
               </div>
@@ -146,7 +197,7 @@ export default function App() {
         <section className="category-section" id="plots">
           <div className="section-heading">
             <span className="eyebrow">Explore by land type</span>
-            <h2>Opportunities that match your goals</h2>
+            <h2>Prime locations ready to build</h2>
           </div>
 
           <div className="category-grid">
@@ -164,7 +215,7 @@ export default function App() {
           <div className="section-heading split-heading">
             <div>
               <span className="eyebrow">Featured plots</span>
-              <h2>Prime land for building and investment</h2>
+              <h2>Prime land for your next project</h2>
             </div>
             <button className="secondary-button">View all</button>
           </div>
@@ -189,10 +240,73 @@ export default function App() {
           </div>
         </section>
 
-        <section className="zones-section" id="investment">
+        <section className="builders-section" id="builders">
+          <div className="section-heading split-heading">
+            <div>
+              <span className="eyebrow">Trusted network</span>
+              <h2>Verified builders & contractors</h2>
+            </div>
+            <button className="secondary-button">View all builders</button>
+          </div>
+
+          <div className="builders-grid">
+            {contractors.map((contractor) => (
+              <article key={contractor.title} className="builder-card">
+                <div className="builder-header">
+                  <h3>{contractor.title}</h3>
+                  <span className="rating">★ {contractor.rating}</span>
+                </div>
+
+                <div className="builder-detail">
+                  <span className="tag">{contractor.specialty}</span>
+                </div>
+
+                <div className="builder-stats">
+                  <div>
+                    <span>Projects</span>
+                    <strong>{contractor.projects}</strong>
+                  </div>
+                  <div>
+                    <span>Service</span>
+                    <strong>{contractor.service}</strong>
+                  </div>
+                </div>
+
+                <button className="text-button">Get a quote</button>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="materials-section" id="materials">
+          <div className="section-heading split-heading">
+            <div>
+              <span className="eyebrow">Building supplies</span>
+              <h2>Quality materials at competitive prices</h2>
+            </div>
+            <button className="secondary-button">Browse catalog</button>
+          </div>
+
+          <div className="materials-grid">
+            {materials.map((material) => (
+              <article key={material.name} className="material-card">
+                <div className="material-icon" aria-hidden="true">📦</div>
+                <h3>{material.name}</h3>
+                <p className="supplier">{material.supplier}</p>
+                <div className="material-details">
+                  <span>{material.unit}</span>
+                  <span className="stock-badge">{material.status}</span>
+                </div>
+                <button className="text-button">Get price</button>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="zones-section">
           <div className="section-heading">
             <span className="eyebrow">Strategic locations</span>
-            <h2>High-potential areas for land buyers</h2>
+            <h2>High-potential areas for development</h2>
           </div>
 
           <div className="zone-grid">
@@ -210,12 +324,12 @@ export default function App() {
 
         <section className="benefits-section">
           <div className="section-heading">
-            <span className="eyebrow">Why choose us</span>
-            <h2>Smart, secure land acquisition</h2>
+            <span className="eyebrow">Why Chisco Home</span>
+            <h2>One platform for complete property development</h2>
           </div>
 
           <div className="benefits-grid">
-            {valuePoints.map((point) => (
+            {landValuePoints.map((point) => (
               <article key={point.title} className="benefit-card">
                 <div className="benefit-icon" aria-hidden="true">✓</div>
                 <h3>{point.title}</h3>
@@ -228,7 +342,7 @@ export default function App() {
         <section className="process-section" id="process">
           <div className="section-heading">
             <span className="eyebrow">How it works</span>
-            <h2>Buy land in three simple steps</h2>
+            <h2>From land to completion in three steps</h2>
           </div>
 
           <div className="process-grid">
@@ -244,12 +358,12 @@ export default function App() {
 
         <section className="lead-section">
           <div className="lead-copy">
-            <span className="eyebrow">Talk with a land specialist</span>
-            <h2>Tell us what you want to buy, and we’ll help you find it.</h2>
+            <span className="eyebrow">Start your project today</span>
+            <h2>Let us help you build smart in Nigeria.</h2>
             <ul>
-              <li>Residential plots in fast-growing communities</li>
-              <li>Commercial land with strong visibility and demand</li>
-              <li>Agricultural acreage for long-term value</li>
+              <li>Find verified land in prime locations</li>
+              <li>Connect with rated contractors and builders</li>
+              <li>Source quality materials at best prices</li>
             </ul>
           </div>
 
@@ -259,29 +373,29 @@ export default function App() {
               <input type="text" placeholder="Your name" />
             </label>
             <label>
-              Email address
-              <input type="email" placeholder="you@example.com" />
+              Email or phone
+              <input type="text" placeholder="you@example.com or 08012345678" />
             </label>
             <label>
-              Land interest
+              Project type
               <select defaultValue="">
                 <option value="" disabled>
-                  Select interest
+                  Select project type
                 </option>
-                <option>Residential plot</option>
-                <option>Commercial plot</option>
-                <option>Agricultural land</option>
-                <option>Estate land</option>
+                <option>Residential home</option>
+                <option>Commercial building</option>
+                <option>Estate development</option>
+                <option>Other</option>
               </select>
             </label>
-            <button type="submit" className="primary-button">Request a callback</button>
+            <button type="submit" className="primary-button">Get started</button>
           </form>
         </section>
 
         <section className="faq-section" id="faq">
           <div className="section-heading">
-            <span className="eyebrow">Land buying questions</span>
-            <h2>Everything you need to know</h2>
+            <span className="eyebrow">Common questions</span>
+            <h2>Building in Nigeria—simplified</h2>
           </div>
 
           <div className="faq-grid">
@@ -296,10 +410,10 @@ export default function App() {
 
         <section className="cta-banner" id="contact">
           <div>
-            <span className="eyebrow alt">Ready to invest?</span>
-            <h2>Let’s help you find the perfect plot.</h2>
+            <span className="eyebrow alt">Ready to build?</span>
+            <h2>Let's make your project happen efficiently.</h2>
           </div>
-          <button className="primary-button">Book a consultation</button>
+          <button className="primary-button">Start now</button>
         </section>
       </main>
 
@@ -314,11 +428,12 @@ export default function App() {
         </div>
         <div className="footer-links">
           <a href="#plots">Plots</a>
-          <a href="#investment">Investment</a>
+          <a href="#builders">Builders</a>
+          <a href="#materials">Materials</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
-        <p>© 2026 Chisco Home</p>
+        <p>© 2026 Chisco Home • Building better in Nigeria</p>
       </footer>
     </div>
   );
